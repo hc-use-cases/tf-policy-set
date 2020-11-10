@@ -21,7 +21,7 @@ module "security-group" {
   security_group_name        = "my-aws-security-group"
   security_group_description = "my-aws-security-group-descr"
   ingress_ports              = [22, 443, 80]
-  tf_vpc                     = module.vpc.vpc_id
+  vpc_id                     = module.vpc.vpc_id
 }
 
 module "ec2" {
