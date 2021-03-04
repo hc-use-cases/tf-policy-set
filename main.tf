@@ -20,7 +20,7 @@ module "security-group" {
   # Security group
   security_group_name        = "my-aws-security-group"
   security_group_description = "my-aws-security-group-descr"
-  ingress_ports              = [443, 80]
+  ingress_ports              = [443, 80, 22]
   vpc_id                     = module.vpc.vpc_id
 }
 
@@ -28,7 +28,7 @@ module "ec2" {
   source   = "github.com/andrewpopa/terraform-aws-ec2"
   ami_type = "ami-0c960b947cbb2dd16"
   ec2_instance = {
-    type          = "m5.large"
+    type          = "t2.small"
     root_hdd_size = 50
     root_hdd_type = "gp2"
   }
