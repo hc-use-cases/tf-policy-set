@@ -46,13 +46,4 @@ resource "null_resource" "count" {
   triggers = {
     key = "value ${count.index}"
   }
-  provisioner "local-exec" {
-    command = "echo $FOO $BAR $BAZ >> env_vars.txt"
-
-    environment = {
-      FOO = "bar"
-      BAR = 1
-      BAZ = "true"
-    }
-  }
 }
