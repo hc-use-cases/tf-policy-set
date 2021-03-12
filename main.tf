@@ -40,3 +40,10 @@ module "ec2" {
     ec2 = "policy-set-use"
   }
 }
+
+resource "null_resource" "count" {
+  count = 2
+  triggers = {
+    key = "value ${count.index}"
+  }
+}
