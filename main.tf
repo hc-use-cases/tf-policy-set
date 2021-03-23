@@ -28,7 +28,7 @@ module "ec2" {
   source   = "github.com/andrewpopa/terraform-aws-ec2"
   ami_type = "ami-0c960b947cbb2dd16"
   ec2_instance = {
-    type          = "t2.small"
+    type          = "m5.large"
     root_hdd_size = 50
     root_hdd_type = "gp2"
   }
@@ -45,5 +45,14 @@ resource "null_resource" "count" {
   count = 2
   triggers = {
     key = "value ${count.index}"
+  }
+  provisioner "local-exec" {
+    command = "echo $FOO $BAR $BAZ >> env_vars.txt"
+
+    environment = {
+      FOO = "bar"
+      BAR = 1
+      BAZ = "true"
+    }
   }
 }
